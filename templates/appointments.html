@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Appointments - NalamConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <h2>♡ NalamConnect</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/doctors">Doctors</a>
+        <a href="/book">Book Appointment</a>
+        <a href="/appointments">My Appointments</a>
+    </div>
+</nav>
+
+<div class="page">
+
+    <h1>My Appointments</h1>
+
+    {% if appointments %}
+
+        {% for appointment in appointments %}
+
+        <div class="card">
+
+            <h2>{{ appointment["doctor_name"] }}</h2>
+
+            <p>
+                Patient: {{ appointment["patient_name"] }}
+            </p>
+
+            <p>
+                Specialization: {{ appointment["specialization"] }}
+            </p>
+
+            <p>
+                Date: {{ appointment["appointment_date"] }}
+            </p>
+
+            <p>
+                Time: {{ appointment["appointment_time"] }}
+            </p>
+
+            <strong>
+                {{ appointment["status"] }}
+            </strong>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No appointments found.</p>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
